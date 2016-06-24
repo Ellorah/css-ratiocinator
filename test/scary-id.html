@@ -1,7 +1,9 @@
 <html>
 <head>
   <style type="text/css">
-    /* Original CSS here */
+    #\:scary\:id {
+      color: blue;
+    }
   </style>
 
   <script type="text/javascript">
@@ -13,11 +15,18 @@
         'margin': '8px',
         'height': '284px',
         'width': '384px'
+      },
+      'DIV': {
+        'height': '18px',
+        'width': '384px'
+      },
+      '#\\:scary\\:id': {
+        'color': 'rgb(0, 0, 255)'
       }
-      // Expected refactored styles here
     };
   </script>
 </head>
 <body>
-  <!-- Your HTML here -->
+  <div>Sanity</div>
+  <div id=":scary:id">Malarky!</div>
 </body>
