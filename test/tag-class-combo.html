@@ -1,0 +1,27 @@
+<html>
+<head>
+  <style type="text/css">
+    div {
+      color: red;
+    }
+    .foo {
+      text-decoration: underline;
+    }
+    div.foo {
+      font-style: italic;
+    }
+  </style>
+
+  <script type="text/javascript">
+    window.expectedStyle = {
+      'div': { 'color': 'red' },
+      '.foo': { 'text-decoration': 'underline' },
+      'div.foo': { 'font-style': 'italic' }
+    };
+  </script>
+</head>
+<body>
+  <div>Hello</div>
+  <section class="foo">Hi</section>
+  <div class="foo">Greetings</div>
+</body>

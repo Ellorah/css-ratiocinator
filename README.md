@@ -1,4 +1,4 @@
-![Logo](css-ratiocinator/raw/master/illustration/githubheader.png "Logo")
+![Logo](illustration/githubheader.png "Logo")
 
 The CSS Ratiocinator automatically refactors your CSS and generates a
 new stylesheet for your site. It works by examining your site's live DOM
@@ -12,14 +12,23 @@ provides a harmonious new beginning.
 
 ## Usage
 
-This program runs from the command line using the PhantomJS headless
-browser.
+The **easiest way** is to use the web interface
+[csstrashman.com](http://www.csstrashman.com).
+
+Alternatively, this program runs from the **command line** using the
+PhantomJS headless browser.
 
 1. Install [PhantomJS](http://phantomjs.org/)
 1. Clone this repo
-1. In the cloned directory, run `phantomjs ratiocinate.js [URL]`
+1. In the cloned directory, run `phantomjs ratiocinate.js URL`
 1. The new CSS will appear.
 1. (optionally) Feed output through [sass-convert](http://blog.derekperez.com/post/816063805/move-you-existing-stylebase-over-to-sass-or-scss)
+
+Finally, it runs in the browser as a **bookmarklet**. Execute the
+following to split the browser window with the original page on the left
+and the Ratiocinated version on the right.
+
+    javascript:(function%20()%20%7Bvar%20script%20=%20document.createElement(%22script%22);script.src%20=%20%22https://raw.github.com/begriffs/css-ratiocinator/master/extras/bookmarklet.js%22;document.getElementsByTagName(%22head%22)[0].appendChild(script);%7D());
 
 ## Faq
 
@@ -62,7 +71,7 @@ a full list of computed style for every node, and our first step is to
 prune redundancies from cascaded style in a depth-first process called
 "lifting."
 
-![Lifting](css-ratiocinator/raw/master/illustration/lift.png "Lifting")
+![Lifting](illustration/lift.png "Lifting")
 
 The last step in assessment is stripping default styles. The final
 style needn't specify CSS defaults, so we remove them prior to the
@@ -71,7 +80,7 @@ consolidation phase.
 Next comes consolidation, where we find shared pieces of style
 throughout the cleaned DOM tree and extract them to CSS declarations.
 
-![Consolidating](css-ratiocinator/raw/master/illustration/consolidate.png "Consolidating")
+![Consolidating](illustration/consolidate.png "Consolidating")
 
 In the diagram above, the Ratiocinator will choose to output a
 declaration for the styles in red before those in blue. Although there
@@ -82,15 +91,17 @@ will extract styles for all elements with class `foo` first and then for
 
 ## Contributing
 
-This software is still very much in development. Pull requests are
-welcome; please consult the open [issues](css-ratiocinator/issues) for
-ideas. In general, the current todos fall into these groups:
+It is currently very easy to contribute. Just find something that the
+Ratiocinator does wrong and tell me. The best complaints are very
+specific, preferably made into a new test and submitted via a pull
+request. Luckily that's easy too:
 
-1. Create a test suite and write tests
-1. Try code on real sites and find errors
-1. Accommodate states (e.g. :hover) and resizing
-1. Invent new ways to improve CSS
-1. Define measurements to assess improvement
+1. Find some styles that the Ratiocinator is botching.
+1. Think of the smallest example that will illustrate the problem.
+1. Add a new test by copying `test/template.html` and filling in the blanks.
+1. Save your new test in the `test/` folder.
+1. Run `phantomjs test.js` and make sure it fails.
+1. Submit pull request.
 
 ## License
 
